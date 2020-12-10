@@ -1,5 +1,8 @@
 #pragma once
 
+#ifndef SYSTEM_RENDER_H
+#define SYSTEM_RENDER_H 1
+
 #include "../ECS.h"
 #include "../Engine.h"
 #include "../Components.h"
@@ -20,3 +23,4 @@ private:
 	sf::Texture* LoadTexture(std::string textureFile);
 };
 
+#endif

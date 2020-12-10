@@ -1,5 +1,6 @@
 #include "RenderingSystem.h"
 
+
 RenderingSystem::RenderingSystem(void)
 {
 }
@@ -51,8 +52,10 @@ sf::Texture* RenderingSystem::LoadTexture(std::string textureFile)
 	{
 		std::cerr << "ERROR: Unable to load image " << textureFile << ".\nIs this image in the correct directory?" << std::endl;
 
+		//fprintf(stderr, "ERROR: Unable to load file \'%s\'\n", textureFile.data());
+
 		//system("Pause");
-		std::getchar();
+		int _char = std::getchar();
 
 		exit(EXIT_FAILURE);
 	}
