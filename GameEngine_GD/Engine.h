@@ -9,8 +9,8 @@
 #include "Interface/MainCamera.h"
 #include "Interface/PauseMenu.h"
 
-//#include "Interface/Button.h"
-//#include "Interface/ButtonMap.h"
+#include "Interface/Button.h"
+#include "Interface/ButtonMap.h"
 #include "Interface/States.h"
 
 #include "Systems/RenderingSystem.h"

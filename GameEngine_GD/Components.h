@@ -156,3 +156,20 @@ public:
 	}
 };
 ECS_DEFINE_TYPE(Camera);
+
+
+struct Tag
+{
+public:
+	ECS_DECLARE_TYPE;
+
+	std::vector<std::string> tagNames;
+
+	Tag() {}
+
+	void AddTag(std::string tag)
+	{
+		tagNames.push_back(tag);
+	}
+};
+ECS_DEFINE_TYPE(Tag);
