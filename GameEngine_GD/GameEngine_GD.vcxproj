@@ -143,16 +143,32 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Interface\Button.cpp" />
+    <ClCompile Include="Interface\ButtonMap.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="EngineMain.cpp" />
+    <ClCompile Include="Interface\MainCamera.cpp" />
+    <ClCompile Include="Interface\PauseMenu.cpp" />
+    <ClCompile Include="Interface\States.cpp" />
+    <ClCompile Include="Systems\PhysicsSystem.cpp" />
     <ClCompile Include="Systems\AnimationSystem.cpp" />
+    <ClCompile Include="Systems\InputSystem.cpp" />
+    <ClCompile Include="Systems\MovementSystem.cpp" />
     <ClCompile Include="Systems\RenderingSystem.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Interface\Button.h" />
+    <ClInclude Include="Interface\ButtonMap.h" />
     <ClInclude Include="Components.h" />
     <ClInclude Include="ECS.h" />
     <ClInclude Include="Engine.h" />
+    <ClInclude Include="Interface\MainCamera.h" />
+    <ClInclude Include="Interface\PauseMenu.h" />
+    <ClInclude Include="Interface\States.h" />
+    <ClInclude Include="Systems\PhysicsSystem.h" />
     <ClInclude Include="Systems\AnimationSystem.h" />
+    <ClInclude Include="Systems\InputSystem.h" />
+    <ClInclude Include="Systems\MovementSystem.h" />
     <ClInclude Include="Systems\RenderingSystem.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

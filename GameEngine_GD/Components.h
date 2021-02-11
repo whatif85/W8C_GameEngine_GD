@@ -11,12 +11,36 @@ struct Transform
 public:
 	ECS_DECLARE_TYPE;
 
-	float xPos, yPos, rotation;
+	float xPos, yPos;
+	float rotation;
+	float xSpeed, ySpeed;
+	float xSpeedMod, ySpeedMod;
 
-	Transform(float newX, float newY)
-		: xPos(newX), yPos(newY)
+	Transform(float newX, float newY, float newXSpeed = 0.0f, float newYSpeed = 0.0f)
+		: xPos(newX), yPos(newY), xSpeedMod(newXSpeed), ySpeedMod(newYSpeed)
 	{
 		this->rotation = 0.0f;
+		this->xSpeed = 0.0f;
+		this->ySpeed = 0.0f;
+	}
+
+	void UpdateSpeed(float x, float y)
+	{
+		this->xSpeed = x;
+		this->ySpeed = y;
+	}
+
+	void Move()
+	{
+		// halve the speed when moving diagonally
+		if (xSpeed != 0 && ySpeed != 0)
+		{
+			xSpeed /= 2;
+			ySpeed /= 2;
+		}
+		
+		xPos += xSpeed;
+		yPos += ySpeed;
 	}
 };
 ECS_DEFINE_TYPE(Transform);
@@ -71,3 +95,64 @@ public:
 	}
 };
 ECS_DEFINE_TYPE(Animator);
+
+
+struct InputController
+{
+public:
+	ECS_DECLARE_TYPE;
+
+	bool bInputActive;
+
+	bool wKey, aKey, sKey, dKey;
+
+	InputController()
+	{
+		bInputActive = true;
+
+		wKey = false;
+		aKey = false;
+		sKey = false;
+		dKey = false;
+	}
+};
+ECS_DEFINE_TYPE(InputController);
+
+
+struct BoxCollider
+{
+public:
+	ECS_DECLARE_TYPE;
+
+	int leftEdge, rightEdge, topEdge, bottomEdge;
+
+	BoxCollider()
+	{
+		// set all structure's members to 0
+		std::memset(this, '\0', sizeof(BoxCollider));
+	}
+
+	void Update(int xSide, int ySide, int width, int height)
+	{
+		leftEdge = xSide;
+		rightEdge = xSide + width;
+		topEdge = ySide;
+		bottomEdge = ySide + height;
+	}
+};
+ECS_DEFINE_TYPE(BoxCollider);
+
+
+struct Camera
+{
+public:
+	ECS_DECLARE_TYPE;
+
+	sf::View cameraView;
+
+	Camera(sf::Vector2f pivot)
+	{
+		cameraView.setCenter(pivot);
+	}
+};
+ECS_DEFINE_TYPE(Camera);
