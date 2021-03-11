@@ -150,11 +150,13 @@
     <ClCompile Include="Interface\MainCamera.cpp" />
     <ClCompile Include="Interface\PauseMenu.cpp" />
     <ClCompile Include="Interface\States.cpp" />
+    <ClCompile Include="Interface\Tile.cpp" />
     <ClCompile Include="Systems\PhysicsSystem.cpp" />
     <ClCompile Include="Systems\AnimationSystem.cpp" />
     <ClCompile Include="Systems\InputSystem.cpp" />
     <ClCompile Include="Systems\MovementSystem.cpp" />
     <ClCompile Include="Systems\RenderingSystem.cpp" />
+    <ClCompile Include="Systems\TileMapSystem.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Interface\Button.h" />
@@ -165,11 +167,13 @@
     <ClInclude Include="Interface\MainCamera.h" />
     <ClInclude Include="Interface\PauseMenu.h" />
     <ClInclude Include="Interface\States.h" />
+    <ClInclude Include="Interface\Tile.h" />
     <ClInclude Include="Systems\PhysicsSystem.h" />
     <ClInclude Include="Systems\AnimationSystem.h" />
     <ClInclude Include="Systems\InputSystem.h" />
     <ClInclude Include="Systems\MovementSystem.h" />
     <ClInclude Include="Systems\RenderingSystem.h" />
+    <ClInclude Include="Systems\TileMapSystem.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

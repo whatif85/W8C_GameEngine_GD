@@ -185,6 +185,48 @@ void PhysicsSystem::tick(ECS::World* world, float deltaTime)
                 sprite->picture.getTextureRect().height);
         });
 
+        world->each<struct Transform, struct BoxCollider>(
+            [&](ECS::Entity* touchingEntity,
+                ECS::ComponentHandle<Transform> transform,
+                ECS::ComponentHandle<BoxCollider> box) -> void
+        {
+            world->each<struct TileMap>(
+                [&](ECS::Entity* touchedEntity,
+                    ECS::ComponentHandle<TileMap> tileMap) -> void
+            {
+                // loop through all of the tiles in the tile map
+                // Python style: for x in range (0, 5)
+                for (auto& x : tileMap->map)
+                {
+                    for (auto& y : x)
+                    {
+                        for (auto& z : y)
+                        {
+                            if (z != nullptr)
+                            {
+                                // statement to avoid comparing same entity to itself
+                                if (touchingEntity->getEntityId() != touchedEntity->getEntityId())
+                                {
+                                    // check if this specific tile has collision
+                                    if (z->GetCollision() == true)
+                                    {
+                                        // initial collision check
+                                        if (IsColliding(box, z->shape, transform->xSpeed, transform->ySpeed))
+                                        {
+                                            // final collision check
+                                            CheckCollisionSides(transform, box, z->shape);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+
+            });
+        });
+
         world->each<struct BoxCollider, struct Transform, struct Tag>(
             [&](ECS::Entity* touchingEntity,
                 ECS::ComponentHandle<struct BoxCollider> touchingBox,

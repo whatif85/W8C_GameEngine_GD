@@ -18,7 +18,7 @@ public:
 
 
 private:
-	void InitButtons();
+	void InitButtons(/*sf::RenderWindow* wnd*/);
 	void Quit(sf::RenderWindow* window);
 };
 

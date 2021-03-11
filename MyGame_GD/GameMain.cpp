@@ -23,6 +23,7 @@ int main(int argc, char* args[])
 	gameEngine.AddSystem(new InputSystem(&window));
 	gameEngine.AddSystem(new MovementSystem());
 	gameEngine.AddSystem(new PhysicsSystem());
+	gameEngine.AddSystem(new TileMapSystem());
 
 	// Create 3 entities to the world
 	background = gameEngine.world->create();
@@ -35,6 +36,7 @@ int main(int argc, char* args[])
 	background->assign<Sprite2D>("../Debug/Pics/bg.jpg");
 	background->assign<Tag>();
 	background->get<Tag>()->AddTag("Background");
+	background->assign<TileMap>();
 
 	stickFigure->assign<Transform>(300, 300, 0.2f, 0.2f);
 	stickFigure->assign<Sprite2D>("../Debug/Pics/herosheet.png");
@@ -68,6 +70,7 @@ int main(int argc, char* args[])
 	//printf("Entity ID is %lu\n", stickFigure->getEntityId()); // long unsigned
 
 	//printf("X: %f\nY: %f\n", background->get<Transform>()->xPos, background->get<Transform>()->yPos);
+	// printf("%s\n", bState?"TRUE.":"FALSE");
 
 	// Pass window reference to the engine and start
 	gameEngine.Start(&window);

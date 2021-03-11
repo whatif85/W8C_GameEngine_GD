@@ -9,7 +9,8 @@ PauseMenu::PauseMenu(sf::RenderWindow* window)
 	InitButtons();
 }
 
-PauseMenu::~PauseMenu() {}
+PauseMenu::~PauseMenu()
+= default;
 
 void PauseMenu::Update(sf::Event event, float deltaTime, sf::RenderWindow* window)
 {
@@ -79,9 +80,9 @@ void PauseMenu::Render(sf::RenderWindow* window, float deltaTime, sf::Vector2f r
 	window->display();
 }
 
-void PauseMenu::InitButtons()
+void PauseMenu::InitButtons(/*sf::RenderWindow* wnd*/)
 {
-	sf::Vector2f _size = sf::Vector2f(125, 30);
+	sf::Vector2f _size = sf::Vector2f(125, 30); /*= static_cast<sf::Vector2f>(wnd->getSize().x, wnd->getSize().y)*/
 
 	ButtonMap::GetMap().insert(
 		{
